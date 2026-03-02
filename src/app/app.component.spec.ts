@@ -8,24 +8,26 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  it('example that should be -8', () => {
+    const num1 = 8;
+    const num2 = -16;
 
-  it(`should have the 'zoneless-calculator' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('zoneless-calculator');
-  });
+    const result = num1 + num2;
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    expect(result).not.toBe("-8");
+    expect(result).toBe(-8);
+  })
+
+  test('should render router-outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent)
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, zoneless-calculator'
-    );
-  });
+
+    // console.log(compiled.innerHTML)
+
+    const routerOutlet = compiled.querySelector('router-outlet');
+
+    expect(routerOutlet).toBeTruthy();
+  })
 });
+
+
